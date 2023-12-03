@@ -34,3 +34,8 @@ part2 = np.sum([np.prod(list(highest_per_game[i+1].values())) for i in range(len
 
 print(part1)
 print(part2)
+
+with open('answers/day02.txt', 'w') as f:
+    f.write(str(part1))
+    f.write("\n")
+    f.write(str(part2))
