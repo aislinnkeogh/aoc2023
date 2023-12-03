@@ -24,7 +24,7 @@ def check_for_symbols(grid, x, y):
             pass
         else:
             try:
-                if re.match('[^\d.]', grid[i][j]):
+                if re.match(r"[^\d.]", grid[i][j]):
                     return True
             except:
                 pass
