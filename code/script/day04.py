@@ -15,8 +15,3 @@ part2 = sum(copies.values())
 
 print(part1)
 print(part2)
-
-with open('answers/day04.txt', 'w') as f:
-    f.write(str(part1))
-    f.write("\n")
-    f.write(str(part2))

@@ -38,8 +38,3 @@ for line in regex_lines:
 
 print(part1)
 print(part2)
-
-with open('answers/day01.txt', 'w') as f:
-    f.write(str(part1))
-    f.write("\n")
-    f.write(str(part2))
