@@ -3,7 +3,7 @@
 with open('input/day04.txt') as f:
     lines = [line.rstrip("\n") for line in f.readlines()]
 
-cards = {i+1: {"winning": lines[i].split(": ")[1].split(" | ")[0].split(), "have": lines[i].split(": ")[1].split(" | ")[1].split()} for i in range(len(lines))}
+cards = {i+1: {"winning": line.split(": ")[1].split(" | ")[0].split(), "have": line.split(": ")[1].split(" | ")[1].split()} for i, line in enumerate(lines)}
 matches = [len(set(cards[i+1]["winning"]).intersection(set(cards[i+1]["have"]))) for i in range(len(cards))]
 part1 = sum([2**(m-1) for m in matches if m>0])
 
