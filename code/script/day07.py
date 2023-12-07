@@ -5,8 +5,7 @@ from collections import Counter
 def card_to_num(card):
     if card.isnumeric():
         return int(card)
-    else:
-        return {'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}[card]
+    return {'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}[card]
 
 with open('input/day07.txt') as f:
     hands_and_bids = []
