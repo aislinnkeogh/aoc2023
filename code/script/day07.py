@@ -20,10 +20,8 @@ hands_and_bids.sort(key = lambda e: (strength(e[0]), e[0])) # sort first by the 
 part1 = sum(bid*(i+1) for i, (hand, bid) in enumerate(hands_and_bids))
 
 def replace_jokers(hand):
-    hand_minus_jokers = tuple(card for card in hand if card!=11)
-    if hand_minus_jokers: # if there's anything left after removing jokers, find the most common card and replace jokers with that
-        most_common = Counter(hand_minus_jokers).most_common(1)[0][0]
-        best_hand = tuple(card if card!=11 else most_common for card in hand)
+    if tuple(card for card in hand if card!=11): # if there's anything left after removing jokers, find the most common card and replace jokers with that
+        best_hand = tuple(card if card!=11 else Counter(hand_minus_jokers).most_common(1)[0][0] for card in hand)
     else: # if all cards were jokers, it's already a five of a kind, so don't change it
         best_hand = hand
     individual_scores = tuple(card if card!=11 else 1 for card in hand)
