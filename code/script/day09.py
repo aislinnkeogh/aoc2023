@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-import copy
-
 with open("input/day09.txt") as f:
     histories = [[int(val) for val in line.split()] for line in (l.rstrip("\n") for l in f.readlines())]
 
@@ -11,7 +9,8 @@ for h in histories:
     diffs = [h]
     keep_going = True
     while keep_going:
-        diffs.append([diffs[-1][i+1]-diffs[-1][i] for i in range(len(diffs[-1])-1)])
+        # diffs.append([diffs[-1][i+1]-diffs[-1][i] for i in range(len(diffs[-1])-1)])
+        diffs.append([diffs[-1][i+1]-val for i, val in enumerate(diffs[-1][:-1])])
         if set(diffs[-1]) == {0}:
             for j in range(len(diffs)-1, 0, -1):
                 diffs[j-1].append(diffs[j-1][-1] + diffs[j][-1])
