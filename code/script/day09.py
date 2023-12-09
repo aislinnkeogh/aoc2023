@@ -9,7 +9,6 @@ for h in histories:
     diffs = [h]
     keep_going = True
     while keep_going:
-        # diffs.append([diffs[-1][i+1]-diffs[-1][i] for i in range(len(diffs[-1])-1)])
         diffs.append([diffs[-1][i+1]-val for i, val in enumerate(diffs[-1][:-1])])
         if set(diffs[-1]) == {0}:
             for j in range(len(diffs)-1, 0, -1):
