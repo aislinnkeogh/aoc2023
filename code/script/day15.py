@@ -15,10 +15,7 @@ part1 = sum([HASH(step) for step in sequence])
 
 lenses = [(step[:-2], int(step[-1])) if step[-2]=="=" else (step[:-1], 0) for step in sequence]
 
-def default_val(): 
-    return ([], [])
-
-boxes = defaultdict(default_val)
+boxes = {i: [[],[]] for i in range(256)}
 for step in lenses:
     labels, focal_lengths = boxes[HASH(step[0])]
     if step[1] == 0:
