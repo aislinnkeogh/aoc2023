@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import numpy as np
 from collections import defaultdict
 
 with open("input/day15.txt") as f:
@@ -40,7 +39,7 @@ for step in lenses:
 part2 = 0
 for i in boxes.keys():
     for j in range(len(boxes[i][1])):
-        part2 += np.prod([i+1, j+1, boxes[i][1][j]])
+        part2 += (i+1) * (j+1) * boxes[i][1][j]
 
 print(part1)
 print(part2)
