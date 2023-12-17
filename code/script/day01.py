@@ -4,37 +4,27 @@ import re
 
 with open('input/day01.txt') as f:
     lines = [line.rstrip("\n") for line in f.readlines()]
+    
+parsed_lines = []
+for old_line in lines:
+    new_line = re.sub("one", "o1e", old_line)
+    new_line = re.sub("two", "t2o", new_line)
+    new_line = re.sub("three", "t3e", new_line)
+    new_line = re.sub("four", "4", new_line)
+    new_line = re.sub("five", "5e", new_line)
+    new_line = re.sub("six", "6", new_line)
+    new_line = re.sub("seven", "7n", new_line)
+    new_line = re.sub("eight", "e8t", new_line)
+    new_line = re.sub("nine", "n9e", new_line)
+    parsed_lines.append((old_line, new_line))
 
-part1 = 0
-for line in lines:
-    digits = []
-    for char in line:
-        if char.isnumeric():
-            digits.append(char)
-    first_and_last = [digits[0], digits[-1]]
-    part1 += int("".join(first_and_last))
+def first_and_last_digit(str):
+    return int("".join([re.search(r'\d', str).group(), re.search(r'\d', str[::-1]).group()]))
 
-regex_lines = []
-for line in lines:
-    line = re.sub("one", "o1e", line)
-    line = re.sub("two", "t2o", line)
-    line = re.sub("three", "t3e", line)
-    line = re.sub("four", "4", line)
-    line = re.sub("five", "5e", line)
-    line = re.sub("six", "6", line)
-    line = re.sub("seven", "7n", line)
-    line = re.sub("eight", "e8t", line)
-    line = re.sub("nine", "n9e", line)
-    regex_lines.append(line)
-
-part2 = 0
-for line in regex_lines:
-    digits = []
-    for char in line:
-        if char.isnumeric():
-            digits.append(char)
-    first_and_last = [digits[0], digits[-1]]
-    part2 += int("".join(first_and_last))
+part1 = part2 = 0
+for line in parsed_lines:
+    part1 += first_and_last_digit(line[0])
+    part2 += first_and_last_digit(line[1])
 
 print(part1)
 print(part2)
