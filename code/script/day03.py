@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import re
-import numpy as np
+from functools import reduce
 
 with open('input/day03.txt') as f:
     lines = [line.rstrip("\n") for line in f.readlines()]
@@ -89,7 +89,7 @@ for i in range(len(spans)):
 part2 = 0
 for gear in potential_gears:
     if len(potential_gears[gear]) == 2:
-        part2 += np.prod(potential_gears[gear])
+        part2 += reduce((lambda x, y: x * y), potential_gears[gear])
 
 print(part1)
 print(part2)
